@@ -1,0 +1,15 @@
+@startuml
+entity LevelHistory{
+    *gameId: String
+    *level: Number
+    completionTime: Number
+}
+entity ShipInformation{
+    *gameId: String
+    shipCoordinates: String
+    playerHealth: Number
+    alienHealth: Number
+}
+
+LevelHistory "1" -- "1" ShipInformation
+@enduml
