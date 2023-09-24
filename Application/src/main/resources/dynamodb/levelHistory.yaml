@@ -1,0 +1,18 @@
+Resources:
+  LevelHistoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: LevelHistory
+      AttributeDefinitions:
+        - AttributeName: "gameId"
+          AttributeType: "S"
+        - AttributeName: "level"
+          AttributeType: "N"
+        - AttributeName: "completionTime"
+          AttributeType: "N"
+      KeySchema:
+        - AttributeName: "gameId"
+          keyType: "HASH"
+        - AttributeName: "level"
+          keyType: "RANGE"
+      BillingMode: "PAY_PER_REQUEST"

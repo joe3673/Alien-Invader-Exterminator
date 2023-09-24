@@ -6,7 +6,8 @@ entity LevelHistory{
 }
 entity ShipInformation{
     *gameId: String
-    shipCoordinates: String
+    playerCoordinates: String
+    alienCoordinates: String
     playerHealth: Number
     alienHealth: Number
 }
