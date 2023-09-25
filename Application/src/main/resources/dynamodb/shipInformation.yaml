@@ -6,15 +6,7 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "gameId"
           AttributeType: "S"
-        - AttributeName: "playerCoordinates"
-          AttributeType: "S"
-        - AttributeName: "alienCoordinates"
-          AttributeType: "S"
-        - AttributeName: "playerHealth"
-          AttributeType: "N"
-        - AttributeName: "alienHealth"
-          AttributeType: "N"
       KeySchema:
         - AttributeName: "gameId"
-          keyType: "HASH"
+          KeyType: "HASH"
       BillingMode: "PAY_PER_REQUEST"
