@@ -21,11 +21,12 @@ public class ShipInformationCreateRequest {
     @Min(0)
     @JsonProperty("playerHealth")
     private int playerHealth;
-
     @Min(0)
     @JsonProperty("alienHealth")
     private int alienHealth;
 
+
+    // TODO Getters/Settersgit status
     public String getGameId() {
         return gameId;
     }
@@ -33,7 +34,6 @@ public class ShipInformationCreateRequest {
     public String getPlayerCoordinates() {
         return playerCoordinates;
     }
-
     public void setPlayerCoordinates(String playerCoordinates) {
         this.playerCoordinates = playerCoordinates;
     }
@@ -41,7 +41,6 @@ public class ShipInformationCreateRequest {
     public String getAlienCoordinates() {
         return alienCoordinates;
     }
-
     public void setAlienCoordinates(String alienCoordinates) {
         this.alienCoordinates = alienCoordinates;
     }
@@ -49,7 +48,6 @@ public class ShipInformationCreateRequest {
     public int getPlayerHealth() {
         return playerHealth;
     }
-
     public void setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
     }
@@ -57,7 +55,6 @@ public class ShipInformationCreateRequest {
     public int getAlienHealth() {
         return alienHealth;
     }
-
     public void setAlienHealth(int alienHealth) {
         this.alienHealth = alienHealth;
     }
