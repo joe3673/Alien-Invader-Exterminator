@@ -1,19 +1,23 @@
-package com.kenzie.appserver.service.model;
+package com.kenzie.appserver.controller.model;
 
-public class LevelHistory {
-    private final String gameId;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
+public class LevelHistoryCreateRequest {
+    @NotEmpty
+    @JsonProperty("gameId")
+    private String gameId;
+
+    @Min(0)
+    @JsonProperty("level")
     private int levelNumber;
 
+    @Min(0)
+    @JsonProperty("completionTime")
     private int completionTime;
 
-
-    // TODO Constructors
-    public LevelHistory(String gameId, int levelNumber, int completionTime) {
-        this.gameId = gameId;
-        this.levelNumber = levelNumber;
-        this.completionTime = completionTime;
-    }
 
     // TODO Getters/Setters
     public String getGameId() {
