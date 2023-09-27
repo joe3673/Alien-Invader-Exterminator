@@ -3,23 +3,23 @@ package com.kenzie.appserver.repositories.model;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 
 import java.util.Objects;
 
 @DynamoDBTable(tableName = "ShipInformation")
-public class ShipRecord {
-
+public class ShipInformationRecord {
     private String gameId;
 
     private String playerCoordinates;
-
     private String alienCoordinates;
 
     private int playerHealth;
-
     private int alienHealth;
 
-    @DynamoDBHashKey(attributeName = "id")
+
+    // TODO Getters/Setters
+    @DynamoDBHashKey(attributeName = "gameId")
     public String getGameId() {
         return gameId;
     }
@@ -28,7 +28,6 @@ public class ShipRecord {
     public String getPlayerCoordinates() {
         return playerCoordinates;
     }
-
     @DynamoDBAttribute(attributeName = "alienCoordinates")
     public String getAlienCoordinates() {
         return alienCoordinates;
@@ -38,7 +37,6 @@ public class ShipRecord {
     public int getPlayerHealth() {
         return playerHealth;
     }
-
     @DynamoDBAttribute(attributeName = "alienHealth")
     public int getAlienHealth() {
         return alienHealth;
@@ -51,7 +49,6 @@ public class ShipRecord {
     public void setPlayerCoordinates(String playerCoordinates) {
         this.playerCoordinates = playerCoordinates;
     }
-
     public void setAlienCoordinates(String alienCoordinates) {
         this.alienCoordinates = alienCoordinates;
     }
@@ -59,11 +56,12 @@ public class ShipRecord {
     public void setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
     }
-
     public void setAlienHealth(int alienHealth) {
         this.alienHealth = alienHealth;
     }
 
+
+    // TODO Methods
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,7 +70,7 @@ public class ShipRecord {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ShipRecord exampleRecord = (ShipRecord) o;
+        ShipInformationRecord exampleRecord = (ShipInformationRecord) o;
         return Objects.equals(gameId, exampleRecord.gameId);
     }
 

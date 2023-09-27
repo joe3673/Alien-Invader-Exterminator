@@ -6,9 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 public class ShipInformationCreateRequest {
-
     @NotEmpty
-    @JsonProperty("id")
+    @JsonProperty("gameId")
     private String gameId;
 
     @NotEmpty
@@ -26,7 +25,7 @@ public class ShipInformationCreateRequest {
     private int alienHealth;
 
 
-    // TODO Getters/Settersgit status
+    // TODO Getters/Setters
     public String getGameId() {
         return gameId;
     }

@@ -6,9 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 public class ShipInformationUpdateRequest {
-
     @NotEmpty
-    @JsonProperty("id")
+    @JsonProperty("gameId")
     private String gameId;
 
     @NotEmpty

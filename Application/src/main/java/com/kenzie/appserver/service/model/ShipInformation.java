@@ -1,17 +1,16 @@
 package com.kenzie.appserver.service.model;
 
 public class ShipInformation {
-
     private final String gameId;
 
     private String playerCoordinates;
-
     private String alienCoordinates;
 
     private int playerHealth;
-
     private int alienHealth;
 
+
+    // TODO Constructors
     public ShipInformation(String gameId, String playerCoordinates,
                            String alienCoordinates, int playerHealth, int alienHealth) {
         this.gameId = gameId;
@@ -21,6 +20,8 @@ public class ShipInformation {
         this.alienHealth = alienHealth;
     }
 
+
+    // TODO Getters/Setters
     public String getGameId() {
         return gameId;
     }
@@ -28,7 +29,6 @@ public class ShipInformation {
     public String getPlayerCoordinates() {
         return playerCoordinates;
     }
-
     public void setPlayerCoordinates(String playerCoordinates) {
         this.playerCoordinates = playerCoordinates;
     }
@@ -36,7 +36,6 @@ public class ShipInformation {
     public String getAlienCoordinates() {
         return alienCoordinates;
     }
-
     public void setAlienCoordinates(String alienCoordinates) {
         this.alienCoordinates = alienCoordinates;
     }
@@ -44,7 +43,6 @@ public class ShipInformation {
     public int getPlayerHealth() {
         return playerHealth;
     }
-
     public void setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
     }
@@ -52,7 +50,6 @@ public class ShipInformation {
     public int getAlienHealth() {
         return alienHealth;
     }
-
     public void setAlienHealth(int alienHealth) {
         this.alienHealth = alienHealth;
     }

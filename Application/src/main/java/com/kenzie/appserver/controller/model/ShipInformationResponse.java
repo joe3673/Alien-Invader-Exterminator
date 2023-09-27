@@ -8,9 +8,8 @@ import javax.validation.constraints.NotEmpty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ShipInformationResponse {
-
     @NotEmpty
-    @JsonProperty("id")
+    @JsonProperty("gameId")
     private String gameId;
 
     @NotEmpty
@@ -31,6 +30,9 @@ public class ShipInformationResponse {
     // TODO Getters/Setters
     public String getGameId() {
         return gameId;
+    }
+    public void setGameId(String gameId) {
+        this.gameId = gameId;
     }
 
     public String getPlayerCoordinates() {
