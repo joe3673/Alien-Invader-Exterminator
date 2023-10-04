@@ -9,6 +9,13 @@ public class ShipInformation {
     private int playerHealth;
     private int alienHealth;
 
+    private int round;
+
+    private long startTime;
+
+    private long endTime;
+
+
 
     // TODO Constructors
     public ShipInformation(String gameId, String playerCoordinates,
@@ -18,6 +25,9 @@ public class ShipInformation {
         this.alienCoordinates = alienCoordinates;
         this.playerHealth = playerHealth;
         this.alienHealth = alienHealth;
+        this.round = 0;
+        this.startTime = System.currentTimeMillis();
+        this.endTime = 0;
     }
 
 
@@ -52,5 +62,29 @@ public class ShipInformation {
     }
     public void setAlienHealth(int alienHealth) {
         this.alienHealth = alienHealth;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
     }
 }

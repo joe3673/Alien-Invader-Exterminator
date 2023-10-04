@@ -27,6 +27,8 @@ public class ShipInformationService {
         shipInformationRecord.setAlienCoordinates(shipInformation.getAlienCoordinates());
         shipInformationRecord.setPlayerHealth(shipInformation.getPlayerHealth());
         shipInformationRecord.setAlienHealth(shipInformation.getAlienHealth());
+        shipInformationRecord.setRound(1);
+        shipInformationRecord.setStartTime(System.currentTimeMillis());
 
         shipInformationRepository.save(shipInformationRecord);
 
@@ -48,6 +50,7 @@ public class ShipInformationService {
     }
 
     public void deleteShipInformationById(String gameId) {
+
         shipInformationRepository.deleteById(gameId);
         cacheStore.evict(gameId);
     }

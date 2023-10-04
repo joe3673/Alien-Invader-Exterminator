@@ -17,6 +17,12 @@ public class ShipInformationRecord {
     private int playerHealth;
     private int alienHealth;
 
+    private int round;
+
+    private long startTime;
+
+    private long endTime;
+
 
     // TODO Getters/Setters
     @DynamoDBHashKey(attributeName = "gameId")
@@ -28,6 +34,7 @@ public class ShipInformationRecord {
     public String getPlayerCoordinates() {
         return playerCoordinates;
     }
+
     @DynamoDBAttribute(attributeName = "alienCoordinates")
     public String getAlienCoordinates() {
         return alienCoordinates;
@@ -37,9 +44,23 @@ public class ShipInformationRecord {
     public int getPlayerHealth() {
         return playerHealth;
     }
+
     @DynamoDBAttribute(attributeName = "alienHealth")
     public int getAlienHealth() {
         return alienHealth;
+    }
+
+    @DynamoDBAttribute(attributeName = "round")
+    public int getRound() {return round;}
+
+    @DynamoDBAttribute(attributeName = "startTime")
+    public long getStartTime() {
+        return startTime;
+    }
+
+    @DynamoDBAttribute(attributeName = "endTime")
+    public long getEndTime() {
+        return endTime;
     }
 
     public void setGameId(String gameId) {
@@ -60,6 +81,17 @@ public class ShipInformationRecord {
         this.alienHealth = alienHealth;
     }
 
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
 
     // TODO Methods
     @Override

@@ -1,16 +1,4 @@
-package com.kenzie.appserver.controller;
-
-import com.kenzie.appserver.controller.model.ShipInformationCreateRequest;
-import com.kenzie.appserver.controller.model.ShipInformationResponse;
-import com.kenzie.appserver.controller.model.ShipInformationUpdateRequest;
-import com.kenzie.appserver.service.ShipInformationService;
-import com.kenzie.appserver.service.model.ShipInformation;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-
-import static java.util.UUID.randomUUID;
+package com.kenzie.appserver.service.model;
 
 @RestController
 @RequestMapping("/shipinformation")
@@ -48,7 +36,6 @@ public class ShipInformationController {
                 shipInformationUpdateRequest.getAlienCoordinates(),
                 shipInformationUpdateRequest.getPlayerHealth(),
                 shipInformationUpdateRequest.getAlienHealth());
-
 
         shipInformationService.updateShipInformation(shipInformation);
 
