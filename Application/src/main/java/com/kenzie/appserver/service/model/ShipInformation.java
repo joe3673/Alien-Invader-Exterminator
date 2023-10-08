@@ -1,5 +1,9 @@
 package com.kenzie.appserver.service.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 public class ShipInformation {
     private final String gameId;
 
@@ -9,10 +13,21 @@ public class ShipInformation {
     private int playerHealth;
     private int alienHealth;
 
+    private List<HitPositions> availablePlayerHitPositions;
+    private List<HitPositions> availableAlienHitPositions;
+
 
     // TODO Constructors
-    public ShipInformation(String gameId, String playerCoordinates,
-                           String alienCoordinates, int playerHealth, int alienHealth) {
+        // When ships are first added
+    public ShipInformation(String playerCoordinates, String alienCoordinates) {
+        this.gameId = UUID.randomUUID().toString();
+        this.playerCoordinates = playerCoordinates;
+        this.alienCoordinates = alienCoordinates;
+        this.playerHealth = 6;
+        this.alienHealth = 6;
+    }
+        // When the ship positions/health is updated
+    public ShipInformation(String gameId, String playerCoordinates, String alienCoordinates, int playerHealth, int alienHealth) {
         this.gameId = gameId;
         this.playerCoordinates = playerCoordinates;
         this.alienCoordinates = alienCoordinates;
