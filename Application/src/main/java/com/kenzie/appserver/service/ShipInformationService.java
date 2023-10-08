@@ -1,6 +1,7 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.config.CacheStore;
+import com.kenzie.appserver.repositories.LevelHistoryRepository;
 import com.kenzie.appserver.repositories.ShipInformationRepository;
 import com.kenzie.appserver.repositories.model.LevelHistoryRecord;
 import com.kenzie.appserver.repositories.model.ShipInformationRecord;
@@ -8,6 +9,7 @@ import com.kenzie.appserver.service.model.ShipInformation;
 
 public class ShipInformationService {
     ShipInformationRepository shipInformationRepository;
+
     CacheStore cacheStore;
 
 
@@ -43,6 +45,8 @@ public class ShipInformationService {
             shipInformationRecord.setAlienCoordinates(shipInformation.getAlienCoordinates());
             shipInformationRecord.setPlayerHealth(shipInformation.getPlayerHealth());
             shipInformationRecord.setAlienHealth(shipInformation.getAlienHealth());
+            shipInformationRecord.setEndTime(shipInformation.getEndTime());
+
 
             shipInformationRepository.save(shipInformationRecord);
             cacheStore.evict(shipInformation.getGameId());
@@ -50,6 +54,8 @@ public class ShipInformationService {
     }
 
     public void deleteShipInformationById(String gameId) {
+
+
 
         shipInformationRepository.deleteById(gameId);
         cacheStore.evict(gameId);

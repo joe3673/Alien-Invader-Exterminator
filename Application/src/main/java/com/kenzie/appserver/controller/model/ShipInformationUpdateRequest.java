@@ -29,10 +29,6 @@ public class ShipInformationUpdateRequest {
     private int round;
 
     @Min(0)
-    @JsonProperty("startTime")
-    private long startTime;
-
-    @Min(0)
     @JsonProperty("endTime")
     private long endTIme;
 
@@ -76,14 +72,6 @@ public class ShipInformationUpdateRequest {
 
     public void setRound(int round) {
         this.round = round;
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
     }
 
     public long getEndTIme() {

@@ -19,13 +19,13 @@ public class ShipInformation {
 
     // TODO Constructors
     public ShipInformation(String gameId, String playerCoordinates,
-                           String alienCoordinates, int playerHealth, int alienHealth) {
+                           String alienCoordinates, int playerHealth, int alienHealth, int round) {
         this.gameId = gameId;
         this.playerCoordinates = playerCoordinates;
         this.alienCoordinates = alienCoordinates;
         this.playerHealth = playerHealth;
         this.alienHealth = alienHealth;
-        this.round = 0;
+        this.round = round;
         this.startTime = System.currentTimeMillis();
         this.endTime = 0;
     }

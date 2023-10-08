@@ -17,6 +17,8 @@ import static java.util.UUID.randomUUID;
 public class ShipInformationController {
     private ShipInformationService shipInformationService;
 
+    private LevelHistoryController levelHistoryController;
+
 
     // TODO Constructor
     ShipInformationController(ShipInformationService shipInformationService) {
@@ -31,8 +33,9 @@ public class ShipInformationController {
                 shipInformationCreateRequest.getPlayerCoordinates(),
                 shipInformationCreateRequest.getAlienCoordinates(),
                 shipInformationCreateRequest.getPlayerHealth(),
-                shipInformationCreateRequest.getAlienHealth());
-                shipInformation.setRound(0);
+                shipInformationCreateRequest.getAlienHealth(),
+                shipInformationCreateRequest.getRound());
+
                 shipInformation.setStartTime(System.currentTimeMillis());
         shipInformationService.addShipInformation(shipInformation);
 
@@ -47,7 +50,9 @@ public class ShipInformationController {
                 shipInformationUpdateRequest.getPlayerCoordinates(),
                 shipInformationUpdateRequest.getAlienCoordinates(),
                 shipInformationUpdateRequest.getPlayerHealth(),
-                shipInformationUpdateRequest.getAlienHealth());
+                shipInformationUpdateRequest.getAlienHealth(),
+                shipInformationUpdateRequest.getRound());
+                shipInformation.setEndTime(System.currentTimeMillis());
 
 
         shipInformationService.updateShipInformation(shipInformation);
