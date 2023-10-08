@@ -27,11 +27,7 @@ public class ShipInformationController {
     // TODO Methods
     @PostMapping
     public ResponseEntity<ShipInformationResponse> addShipInformation(@RequestBody ShipInformationCreateRequest shipInformationCreateRequest) {
-        ShipInformation shipInformation = new ShipInformation(shipInformationCreateRequest.getGameId(),
-                shipInformationCreateRequest.getPlayerCoordinates(),
-                shipInformationCreateRequest.getAlienCoordinates(),
-                shipInformationCreateRequest.getPlayerHealth(),
-                shipInformationCreateRequest.getAlienHealth());
+        ShipInformation shipInformation = new ShipInformation(shipInformationCreateRequest.getPlayerCoordinates(), shipInformationCreateRequest.getAlienCoordinates());
         shipInformationService.addShipInformation(shipInformation);
 
         ShipInformationResponse shipInformationResponse = createShipInformationResponse(shipInformation);
@@ -50,6 +46,20 @@ public class ShipInformationController {
 
         ShipInformationResponse shipInformationResponse = createShipInformationResponse(shipInformation);
 
+        return ResponseEntity.ok(shipInformationResponse);
+    }
+
+    @GetMapping("/{gameId}")
+    public ResponseEntity<ShipInformationResponse> getShipInformationById(@PathVariable("gameId") String gameId) {
+        ShipInformation shipInformation = shipInformationService.getShipInformationById(gameId);
+
+        // If there is no ShipInformation, then return a 204
+        if (shipInformation == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // Otherwise, convert it into a ShipInformationResponse and return it
+        ShipInformationResponse shipInformationResponse = createShipInformationResponse(shipInformation);
         return ResponseEntity.ok(shipInformationResponse);
     }
 

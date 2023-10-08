@@ -1,9 +1,11 @@
 package com.kenzie.appserver.controller.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kenzie.appserver.service.model.HitPositions;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 public class ShipInformationUpdateRequest {
     @NotEmpty
