@@ -1,6 +1,8 @@
 package com.kenzie.appserver.service;
 
+
 import com.kenzie.appserver.config.ShipInformationCache;
+
 import com.kenzie.appserver.repositories.ShipInformationRepository;
 import com.kenzie.appserver.repositories.model.ShipInformationRecord;
 import com.kenzie.appserver.service.model.ShipInformation;
@@ -8,6 +10,9 @@ import com.kenzie.appserver.service.model.ShipInformation;
 public class ShipInformationService {
     ShipInformationRepository shipInformationRepository;
     ShipInformationCache cacheStore;
+
+
+
 
 
     // TODO Constructors
@@ -26,6 +31,8 @@ public class ShipInformationService {
         shipInformationRecord.setAlienCoordinates(shipInformation.getAlienCoordinates());
         shipInformationRecord.setPlayerHealth(shipInformation.getPlayerHealth());
         shipInformationRecord.setAlienHealth(shipInformation.getAlienHealth());
+        shipInformationRecord.setRound(1);
+        shipInformationRecord.setStartTime(System.currentTimeMillis());
 
         shipInformationRepository.save(shipInformationRecord);
 
@@ -41,6 +48,8 @@ public class ShipInformationService {
             shipInformationRecord.setAlienCoordinates(shipInformation.getAlienCoordinates());
             shipInformationRecord.setPlayerHealth(shipInformation.getPlayerHealth());
             shipInformationRecord.setAlienHealth(shipInformation.getAlienHealth());
+            shipInformationRecord.setEndTime(shipInformation.getEndTime());
+
 
             shipInformationRepository.save(shipInformationRecord);
             cacheStore.evict(shipInformation.getGameId());
@@ -62,7 +71,7 @@ public class ShipInformationService {
                         shipInformation.getPlayerCoordinates(),
                         shipInformation.getAlienCoordinates(),
                         shipInformation.getPlayerHealth(),
-                        shipInformation.getAlienHealth()))
+                        shipInformation.getAlienHealth(),shipInformation.getRound()))
                 .orElse(null);
 
         // if shipInformation found, cache it
@@ -75,6 +84,9 @@ public class ShipInformationService {
     }
 
     public void deleteShipInformationById(String gameId) {
+
+
+
         shipInformationRepository.deleteById(gameId);
         cacheStore.evict(gameId);
     }

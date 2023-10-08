@@ -1,5 +1,6 @@
 package com.kenzie.appserver.controller;
 
+import com.kenzie.appserver.controller.model.LevelHistoryCreateRequest;
 import com.kenzie.appserver.controller.model.ShipInformationCreateRequest;
 import com.kenzie.appserver.controller.model.ShipInformationResponse;
 import com.kenzie.appserver.controller.model.ShipInformationUpdateRequest;
@@ -17,6 +18,8 @@ import static java.util.UUID.randomUUID;
 public class ShipInformationController {
     private ShipInformationService shipInformationService;
 
+    private LevelHistoryController levelHistoryController;
+
 
     // TODO Constructor
     ShipInformationController(ShipInformationService shipInformationService) {
@@ -27,7 +30,10 @@ public class ShipInformationController {
     // TODO Methods
     @PostMapping
     public ResponseEntity<ShipInformationResponse> addShipInformation(@RequestBody ShipInformationCreateRequest shipInformationCreateRequest) {
+
         ShipInformation shipInformation = new ShipInformation(shipInformationCreateRequest.getPlayerCoordinates(), shipInformationCreateRequest.getAlienCoordinates());
+        shipInformation.setStartTime(System.currentTimeMillis());
+
         shipInformationService.addShipInformation(shipInformation);
 
         ShipInformationResponse shipInformationResponse = createShipInformationResponse(shipInformation);
@@ -41,7 +47,11 @@ public class ShipInformationController {
                 shipInformationUpdateRequest.getPlayerCoordinates(),
                 shipInformationUpdateRequest.getAlienCoordinates(),
                 shipInformationUpdateRequest.getPlayerHealth(),
-                shipInformationUpdateRequest.getAlienHealth());
+                shipInformationUpdateRequest.getAlienHealth(),
+                shipInformationUpdateRequest.getRound());
+                shipInformation.setEndTime(System.currentTimeMillis());
+
+
         shipInformationService.updateShipInformation(shipInformation);
 
         ShipInformationResponse shipInformationResponse = createShipInformationResponse(shipInformation);
@@ -65,6 +75,18 @@ public class ShipInformationController {
 
     @DeleteMapping("/{gameId}")
     public ResponseEntity deleteShipInformationById(@PathVariable("gameId") String gameId) {
+        ShipInformation shipInformation = shipInformationService.getShipInformationById(gameId);
+        shipInformation.setEndTime(System.currentTimeMillis());
+        long time = (shipInformation.getEndTime() - shipInformation.getStartTime())/ 1000;
+        int timeCompletion = (int)time ;
+
+        LevelHistoryCreateRequest levelHistoryCreateRequest = new LevelHistoryCreateRequest();
+
+        levelHistoryCreateRequest.setGameId(shipInformation.getGameId());
+        levelHistoryCreateRequest.setLevelNumber(0);
+        levelHistoryCreateRequest.setCompletionTime(timeCompletion);
+        levelHistoryController.addLevelToHistory(levelHistoryCreateRequest);
+
         shipInformationService.deleteShipInformationById(gameId);
         return ResponseEntity.noContent().build();
     }
@@ -80,4 +102,6 @@ public class ShipInformationController {
 
         return shipInformationResponse;
     }
+
+
 }

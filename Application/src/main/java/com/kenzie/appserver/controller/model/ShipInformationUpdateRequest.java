@@ -26,6 +26,14 @@ public class ShipInformationUpdateRequest {
     @JsonProperty("alienHealth")
     private int alienHealth;
 
+    @Min(0)
+    @JsonProperty("round")
+    private int round;
+
+    @Min(0)
+    @JsonProperty("endTime")
+    private long endTIme;
+
 
     // TODO Getters/Setters
     public String getGameId() {
@@ -58,5 +66,21 @@ public class ShipInformationUpdateRequest {
     }
     public void setAlienHealth(int alienHealth) {
         this.alienHealth = alienHealth;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public long getEndTIme() {
+        return endTIme;
+    }
+
+    public void setEndTIme(long endTIme) {
+        this.endTIme = endTIme;
     }
 }

@@ -24,6 +24,10 @@ public class LevelHistoryCreateRequest {
         return gameId;
     }
 
+    public void setGameId(String gameId) {
+        this.gameId = gameId;
+    }
+
     public int getLevelNumber() {
         return levelNumber;
     }
