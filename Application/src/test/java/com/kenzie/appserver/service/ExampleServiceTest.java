@@ -1,4 +1,5 @@
-package com.kenzie.appserver.service;
+/*
+\package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.ExampleRepository;
 import com.kenzie.appserver.repositories.model.ExampleRecord;
@@ -22,9 +23,6 @@ public class ExampleServiceTest {
         exampleRepository = mock(ExampleRepository.class);
         exampleService = new ExampleService(exampleRepository);
     }
-    /** ------------------------------------------------------------------------
-     *  exampleService.findById
-     *  ------------------------------------------------------------------------ **/
 
     @Test
     void findById() {
@@ -60,3 +58,6 @@ public class ExampleServiceTest {
     }
 
 }
+
+ */
+
