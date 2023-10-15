@@ -1,0 +1,54 @@
+.playerCell{
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    display: inline-block;
+    margin : -2px;
+    //background-color: var(--oceanBlue);
+    box-shadow: 0 0 0 2px;
+    cursor: pointer;
+}
+.alienCell{
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    display: inline-block;
+    margin : -2px;
+    background-color: var(--oceanBlue);
+    box-shadow: 0 0 0 2px;
+    cursor: pointer;
+}
+
+#gameContainer{
+    text-align: center;
+}
+
+#cellContainer{
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    width: 750px;
+    margin: auto;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+}
+
+#toggleTurn {
+    margin: 10px 0px;
+}
+
+:root {
+    --oceanBlue: #009dc4;
+}
+
+#restartButton {
+    width: 130px;
+    height: 50px;
+}
+#exitButton {
+    width: 100px;
+    height: 50px;
+}
