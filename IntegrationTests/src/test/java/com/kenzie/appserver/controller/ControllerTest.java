@@ -1,11 +1,14 @@
 package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.IntegrationTest;
-import com.kenzie.appserver.controller.model.ExampleCreateRequest;
-import com.kenzie.appserver.service.model.Example;
+
+import com.kenzie.appserver.controller.model.ShipInformationCreateRequest;
+import com.kenzie.appserver.service.ShipInformationService;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.kenzie.appserver.service.model.ShipInformation;
 import net.andreinc.mockneat.MockNeat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +25,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @IntegrationTest
-class ExampleControllerTest {
+class ShipInformationControllerTest {
     @Autowired
     private MockMvc mvc;
 
     @Autowired
-    ExampleService exampleService;
+    ShipInformationService exampleService;
 
     private final MockNeat mockNeat = MockNeat.threadLocal();
 
@@ -35,37 +38,35 @@ class ExampleControllerTest {
 
     @Test
     public void getById_Exists() throws Exception {
-        String id = UUID.randomUUID().toString();
-        String name = mockNeat.strings().valStr();
+        String randomPlayerCoordinates = mockNeat.strings().valStr();
+        String randomAlienCoordinates = mockNeat.strings().valStr();
 
-        Example example = new Example(id, name);
-        Example persistedExample = exampleService.addNewExample(example);
-        mvc.perform(get("/example/{id}", persistedExample.getId())
+        ShipInformation example = new ShipInformation(randomPlayerCoordinates, randomAlienCoordinates);
+        ShipInformation persistedExample = exampleService.addShipInformation(example);
+        mvc.perform(get("/{gameId}", persistedExample.getGameId())
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("id")
-                        .value(is(id)))
-                .andExpect(jsonPath("name")
-                        .value(is(name)))
+                .andExpect(jsonPath("playerCoordinates")
+                        .value(is(randomPlayerCoordinates)))
+                .andExpect(jsonPath("alienCoordinates")
+                        .value(is(randomAlienCoordinates)))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void createExample_CreateSuccessful() throws Exception {
+    public void createShip_CreateSuccessful() throws Exception {
         String name = mockNeat.strings().valStr();
 
-        ExampleCreateRequest exampleCreateRequest = new ExampleCreateRequest();
-        exampleCreateRequest.setName(name);
+        ShipInformationCreateRequest exampleCreateRequest = new ShipInformationCreateRequest();
+
 
         mapper.registerModule(new JavaTimeModule());
 
-        mvc.perform(post("/example")
+        mvc.perform(post("/shipinformation/")
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(exampleCreateRequest)))
-                .andExpect(jsonPath("id")
+                .andExpect(jsonPath("gameId")
                         .exists())
-                .andExpect(jsonPath("name")
-                        .value(is(name)))
                 .andExpect(status().isCreated());
     }
 }

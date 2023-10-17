@@ -44,4 +44,17 @@ public class LevelHistoryService {
 
         return levelHistory;
     }
+    public int getAverageCompletionTime(){
+
+        int levelTotal = 0;
+        int count = 0;
+        List<LevelHistory> levelHistories = getAllLevelHistory();
+
+        for (LevelHistory levelHistory: levelHistories){
+            levelTotal = levelTotal + levelHistory.getCompletionTime();
+            count++;
+        }
+        return levelTotal/count;
+    }
+
 }
